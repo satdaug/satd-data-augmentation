@@ -8013,9 +8013,9 @@ Rectify the typo in the error message.;documentation_debt
 Correct the typographical error in the error message.;documentation_debt
 Amend the spelling mistake in the error message.;documentation_debt
 Fix the typo found in the error message.;documentation_debt
-CAMEL-791: Included the previously omitted license.;documentation_debt
+CAMEL-791: Fix missing license.;documentation_debt
 CAMEL-791: Added the license that was missing.;documentation_debt
-CAMEL-791: Inserted the license that was inadvertently left out.;documentation_debt
+CAMEL-791: Implement license addition.;documentation_debt
 CAMEL-791: Included the license that was mistakenly omitted.;documentation_debt
 """Documentation updates for extensions (#9218)
 Revised documentation for s3 and avro extensions
