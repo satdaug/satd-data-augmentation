@@ -54,9 +54,9 @@ def strip_all_entities(text):
     return text
 
 # Clean hashtags at the end of the sentence, and keep those in the middle of the sentence by removing just the # symbol
-def clean_hashtags(tweet):
+def clean_hashtags(text):
     # Remove hashtags at the end of the sentence
-    new_tweet = re.sub(r'(\s+#[\w-]+)+\s*$', '', tweet).strip()
+    new_tweet = re.sub(r'(\s+#[\w-]+)+\s*$', '', text).strip()
     
     # Remove the # symbol from hashtags in the middle of the sentence
     new_tweet = re.sub(r'#([\w-]+)', r'\1', new_tweet).strip()
@@ -115,35 +115,35 @@ def remove_extra_whitespace(text):
 def remove_url_shorteners(text):
     return re.sub(r'(?:http[s]?://)?(?:www\.)?(?:bit\.ly|goo\.gl|t\.co|tinyurl\.com|tr\.im|is\.gd|cli\.gs|u\.nu|url\.ie|tiny\.cc|alturl\.com|ow\.ly|bit\.do|adoro\.to)\S+', '', text)
 
-# Remove spaces at the beginning and end of the tweet
-def remove_spaces_tweets(tweet):
-    return tweet.strip()
+# Remove spaces at the beginning and end of the text
+def remove_spaces_tweets(text):
+    return text.strip()
 
 # Remove short tweets
-def remove_short_tweets(tweet, min_words=3):
-    words = tweet.split()
-    return tweet if len(words) >= min_words else ""
+def remove_short_tweets(text, min_words=3):
+    words = text.split()
+    return text if len(words) >= min_words else ""
 
 # Function to call all the cleaning functions in the correct order
-def clean_text(tweet):
-    #tweet = strip_emoji(tweet)
-    tweet = expand_contractions(tweet)
-    tweet = filter_non_english(tweet)
-    tweet = strip_all_entities(tweet)
-    tweet = clean_hashtags(tweet)
-    tweet = filter_chars(tweet)
-    tweet = remove_mult_spaces(tweet)
-    tweet = remove_numbers(tweet)
-    tweet = lemmatize(tweet)
-    tweet = remove_short_words(tweet)
-    tweet = replace_elongated_words(tweet)
-    tweet = remove_repeated_punctuation(tweet)
-    tweet = remove_extra_whitespace(tweet)
-    tweet = remove_url_shorteners(tweet)
-    tweet = remove_spaces_tweets(tweet)
-    #tweet = remove_short_tweets(tweet)
-    tweet = ' '.join(tweet.split())  # Remove multiple spaces between words
-    return tweet
+def clean_text(text):
+    #text = strip_emoji(text)
+    text = expand_contractions(text)
+    text = filter_non_english(text)
+    text = strip_all_entities(text)
+    text = clean_hashtags(text)
+    text = filter_chars(text)
+    text = remove_mult_spaces(text)
+    text = remove_numbers(text)
+    text = lemmatize(text)
+    text = remove_short_words(text)
+    text = replace_elongated_words(text)
+    text = remove_repeated_punctuation(text)
+    text = remove_extra_whitespace(text)
+    text = remove_url_shorteners(text)
+    text = remove_spaces_tweets(text)
+    #text = remove_short_tweets(text)
+    text = ' '.join(text.split())  # Remove multiple spaces between words
+    return text
 
 df.to_csv('commit_augmented.csv', encoding='utf-8', index=False)
 
